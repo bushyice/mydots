@@ -1,0 +1,70 @@
+theme = "catppuccin"
+
+[editor.indent-guides]
+render = true
+
+[keys.normal]
+C-z = "@u"
+C-y = "@U"
+C-s = ":write!"
+C-q = ":quit!"
+C-tab = "@ga"
+C-p = ":e ."
+
+"C-/" = "toggle_comments"
+C-left = "move_prev_word_start"
+C-right = "move_next_word_start"
+C-backspace = "delete_word_backward"
+C-del = "delete_word_forward"
+C-S-left = "extend_prev_word_start"
+C-S-right = "extend_next_word_start"
+C-S-up = "extend_line_up"
+C-S-down = "extend_line_down"
+C-up = "extend_line_up"
+C-down = "extend_line_down"
+C-A-up = "copy_selection_on_prev_line"
+C-A-down = "copy_selection_on_next_line"
+
+[editor.lsp]
+display-inlay-hints = true
+
+[keys.insert]
+C-z = "undo"
+C-S-z = "undo"
+C-y = "redo"
+C-tab = "@ga"
+C-c = ":clipboard-yank"
+C-v = ":clipboard-paste-replace"
+C-p = ":e ."
+C-s = ":write!"
+C-q = ":quit!"
+
+"C-/" = "toggle_comments"
+C-left = "move_prev_word_start"
+C-right = "move_next_word_start"
+C-del = "delete_word_forward"       
+C-S-left = "extend_prev_word_start"
+C-S-right = "extend_next_word_start"
+C-S-up = "extend_line_up"
+C-S-down = "extend_line_down"
+S-up = "extend_line_up"
+S-down = "extend_line_down"
+S-left = "extend_char_left"
+S-right = "extend_char_right"
+C-up = "extend_line_up"
+C-down = "extend_line_down"
+C-backspace = "delete_word_backward"
+C-h = "delete_word_backward"
+
+C-d = "delete_selection"
+
+[keys.select]
+# --- Requested additions ---
+C-left = "move_prev_word_start"
+C-right = "move_next_word_start"
+C-S-left = "extend_prev_word_start"
+C-S-right = "extend_next_word_start"
+C-S-up = "extend_line_up"
+C-S-down = "extend_line_down"
+C-up = "extend_line_up"
+C-down = "extend_line_down"

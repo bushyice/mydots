@@ -1,0 +1,114 @@
+format = "$username$localip$directory$git_branch$git_status$fill$rust$cmd_duration\n[◎](fg:magenta) \n"
+palette = "base16"
+
+[c]
+style = "bg:black fg:blue"
+
+[cmd_duration]
+format = "[](fg:black)[ $duration ](bg:black fg:white)[](fg:black)"
+
+[directory]
+format = "[](fg:black)[ $path ]($style)[](fg:black) "
+style = "bg:black fg:white"
+
+[fill]
+style = "fg:white"
+symbol = " "
+
+[git_branch]
+format = "[](fg:black)[ $symbol $branch ]($style)[](fg:black) "
+style = "bg:black fg:orange"
+symbol = ""
+
+[git_status]
+ahead = "[⇡($count)](fg:green)"
+behind = "[⇣($count)](fg:red)"
+deleted = "[✘($count)](fg:red)"
+format = "[](fg:black)([$all_status$ahead_behind]($style))[](fg:black) "
+modified = "[!($count)](fg:yellow)"
+renamed = "[»($count)](fg:magenta)"
+staged = "[++($count)](fg:green)"
+style = "bg:black fg:red"
+untracked = "[?($count)](fg:yellow)"
+up_to_date = "[ ✓ ](fg:magenta)"
+
+[golang]
+style = "bg:black fg:cyan"
+
+[localip]
+disabled = false
+format = "[](fg:black)[ $localipv4 ]($style)[](fg:black)"
+ssh_only = true
+style = "bg:black fg:white"
+
+[nodejs]
+style = "bg:black fg:green"
+
+[palettes.base16]
+base00 = "#1e1e2e"
+base01 = "#181825"
+base02 = "#313244"
+base03 = "#45475a"
+base04 = "#585b70"
+base05 = "#cdd6f4"
+base06 = "#f5e0dc"
+base07 = "#b4befe"
+base08 = "#f38ba8"
+base09 = "#fab387"
+base0A = "#f9e2af"
+base0B = "#a6e3a1"
+base0C = "#94e2d5"
+base0D = "#89b4fa"
+base0E = "#cba6f7"
+base0F = "#f2cdcd"
+base10 = "#1e1e2e"
+base11 = "#1e1e2e"
+base12 = "#f38ba8"
+base13 = "#f9e2af"
+base14 = "#a6e3a1"
+base15 = "#94e2d5"
+base16 = "#89b4fa"
+base17 = "#cba6f7"
+black = "#1e1e2e"
+blue = "#89b4fa"
+bright-black = "#45475a"
+bright-blue = "#89b4fa"
+bright-cyan = "#94e2d5"
+bright-green = "#a6e3a1"
+bright-magenta = "#cba6f7"
+bright-purple = "#cba6f7"
+bright-red = "#f38ba8"
+bright-white = "#b4befe"
+bright-yellow = "#f9e2af"
+brown = "#f2cdcd"
+cyan = "#94e2d5"
+green = "#a6e3a1"
+magenta = "#cba6f7"
+orange = "#fab387"
+purple = "#cba6f7"
+red = "#f38ba8"
+white = "#cdd6f4"
+yellow = "#f9e2af"
+
+[python]
+style = "bg:black fg:yellow"
+
+[rust]
+disabled = false
+format = " [](fg:black)[ $symbol$version ]($style)[](fg:black)"
+style = "bg:black fg:red"
+symbol = " "
+
+[time]
+disabled = false
+format = " [](fg:black)[ $time 󰥔 ]($style)[](fg:black)"
+style = "bg:black fg:magenta"
+time_format = "%R"
+utc_time_offset = "local"
+
+[username]
+disabled = false
+format = "[](fg:black)[  $user ]($style)[](fg:black) "
+show_always = false
+style_root = "bg:black fg:red"
+style_user = "bg:black fg:magenta"

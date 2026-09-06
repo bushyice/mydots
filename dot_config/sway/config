@@ -1,0 +1,160 @@
+font pango:DejaVu Sans 10.000000
+floating_modifier Mod4
+default_border pixel 0
+default_floating_border pixel 0
+hide_edge_borders smart
+focus_wrapping no
+focus_follows_mouse yes
+focus_on_window_activation smart
+mouse_warping output
+workspace_layout default
+workspace_auto_back_and_forth yes
+client.focused #89b4fa #1e1e2e #cdd6f4 #a6e3a1 #89b4fa
+client.focused_inactive #45475a #1e1e2e #cdd6f4 #a6e3a1 #45475a
+client.unfocused #45475a #1e1e2e #cdd6f4 #a6e3a1 #45475a
+client.urgent #f38ba8 #1e1e2e #cdd6f4 #a6e3a1 #f38ba8
+client.placeholder #45475a #1e1e2e #cdd6f4 #a6e3a1 #45475a
+client.background #1e1e2e
+
+bindsym Mod4+0 workspace number 10
+bindsym Mod4+1 workspace number 1
+bindsym Mod4+2 workspace number 2
+bindsym Mod4+3 workspace number 3
+bindsym Mod4+4 workspace number 4
+bindsym Mod4+5 workspace number 5
+bindsym Mod4+6 workspace number 6
+bindsym Mod4+7 workspace number 7
+bindsym Mod4+8 workspace number 8
+bindsym Mod4+9 workspace number 9
+bindsym Mod4+Delete exec sh -c "echo -e 'No\nYes' | wmenu -N 1e1e2e -n 89b4fa -M 1e1e2e -m 89b4fa -S 89b4fa -s cdd6f4 -l 2 -p 'Exit Sway?' | grep -q Yes && swaymsg exit"
+
+bindsym Mod4+Down focus down
+bindsym Mod4+Left focus left
+bindsym Mod4+Return exec warp-terminal
+bindsym Mod4+Right focus right
+bindsym Mod4+Shift+0 move container to workspace number 10
+bindsym Mod4+Shift+1 move container to workspace number 1
+bindsym Mod4+Shift+2 move container to workspace number 2
+bindsym Mod4+Shift+3 move container to workspace number 3
+bindsym Mod4+Shift+4 move container to workspace number 4
+bindsym Mod4+Shift+5 move container to workspace number 5
+bindsym Mod4+Shift+6 move container to workspace number 6
+bindsym Mod4+Shift+7 move container to workspace number 7
+bindsym Mod4+Shift+8 move container to workspace number 8
+bindsym Mod4+Shift+9 move container to workspace number 9
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Right move right
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+b exec pkill -SIGUSR1 waybar
+bindsym Mod4+Shift+c reload
+bindsym Mod4+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym Mod4+Shift+h move left
+bindsym Mod4+Shift+j move down
+bindsym Mod4+Shift+k move up
+bindsym Mod4+Shift+l move right
+bindsym Mod4+Shift+minus move scratchpad
+bindsym Mod4+Shift+p exec swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | {app_id, pid, name, id, shell, window}' | jq -r 'to_entries[] | "\(.key | ascii_upcase)\t\n\(.value)"' | zenity --list --title="Window Properties" --column="Field" --column="Value" --width=400 --height=300
+
+bindsym Mod4+Shift+q kill
+bindsym Mod4+Shift+space layout stacking
+bindsym Mod4+Tab workspace back_and_forth
+bindsym Mod4+Up focus up
+bindsym Mod4+a exec pkill -x wofi || wofi --allow-images --show drun
+bindsym Mod4+b exec vivaldi
+bindsym Mod4+c exec code
+bindsym Mod4+d exec pkill -x wmenu-run || wmenu-run -i -N 1e1e2e -n 89b4fa -M 1e1e2e -m 89b4fa -S 89b4fa -s cdd6f4
+bindsym Mod4+e layout toggle split
+bindsym Mod4+f fullscreen toggle
+bindsym Mod4+h focus left
+bindsym Mod4+j focus down
+bindsym Mod4+k focus up
+bindsym Mod4+l exec swaylock
+bindsym Mod4+minus scratchpad show
+bindsym Mod4+p exec swaylock
+bindsym Mod4+q kill
+bindsym Mod4+r mode resize
+bindsym Mod4+s layout tabbed
+bindsym Mod4+space focus mode_toggle
+bindsym Mod4+t exec ghostty
+bindsym Mod4+v exec /home/makano/.config/scripts/cliphist.sh c
+bindsym Mod4+w floating toggle
+bindsym Print exec /home/makano/.config/scripts/screenshot.sh s
+bindsym XF86AudioLowerVolume exec /home/makano/.config/scripts/volumecontrol.sh -o d
+bindsym XF86AudioMicMute exec /home/makano/.config/scripts/volumecontrol.sh -i m
+bindsym XF86AudioMute exec /home/makano/.config/scripts/volumecontrol.sh -o m
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioRaiseVolume exec /home/makano/.config/scripts/volumecontrol.sh -o i
+bindsym XF86MonBrightnessDown exec /home/makano/.config/scripts/brightnesscontrol.sh d
+bindsym XF86MonBrightnessUp exec /home/makano/.config/scripts/brightnesscontrol.sh i
+
+input "*" {
+  dwt disabled
+  natural_scroll enabled
+  pointer_accel 0
+  tap enabled
+}
+
+output "*" {
+  bg /nix/store/4bc4s5r70j2rjw2r3nl1dgv4f55vkyal-wallpaper.png fill
+}
+
+seat "*" {
+
+}
+
+mode "resize" {
+  bindsym Down resize grow height 10 px
+  bindsym Escape mode default
+  bindsym Left resize shrink width 10 px
+  bindsym Return mode default
+  bindsym Right resize grow width 10 px
+  bindsym Up resize shrink height 10 px
+  bindsym h resize shrink width 10 px
+  bindsym j resize grow height 10 px
+  bindsym k resize shrink height 10 px
+  bindsym l resize grow width 10 px
+}
+
+bar {
+  font pango:monospace 8.000000
+  swaybar_command waybar
+}
+
+gaps inner 6
+exec /home/makano/.config/scripts/lowbattery.sh
+
+exec blueman-applet
+
+exec nm-applet --indicator
+
+exec wl-paste --type text --watch cliphist store
+
+exec wl-paste --type image --watch cliphist store
+
+exec swaync
+
+exec kdeconnect-indicator
+
+exec hypr-autostart
+
+exec "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE NIXOS_OZONE_WL XCURSOR_THEME XCURSOR_SIZE; systemctl --user reset-failed && systemctl --user start sway-session.target && swaymsg -mt subscribe '[]' || true && systemctl --user stop sway-session.target"
+	bindgesture swipe:right workspace prev
+	bindgesture swipe:left workspace next
+	bindgesture swipe:up focus left
+	bindgesture swipe:down focus right
+	corner_radius 10
+
+	# Catppuccin Mocha - Client Styles
+	client.focused          #1e1e2e #89b4fa #cdd6f4 #b4befe #89b4fa
+	client.focused_inactive #1e1e2e #313244 #a6adc8 #6c7086 #313244
+	client.unfocused        #1e1e2e #313244 #a6adc8 #313244 #313244
+	client.urgent           #1e1e2e #f38ba8 #11111b #f38ba8 #f38ba8
+	
+	for_window [app_id="zenity"] floating enable
+
+for_window [app_id="gamescope"] floating enable
+for_window [app_id="gamescope"] move window to output HDMI-A-1

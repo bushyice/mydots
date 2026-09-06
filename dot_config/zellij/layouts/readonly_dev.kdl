@@ -1,0 +1,36 @@
+layout {
+	default_tab_template {
+		pane {
+			borderless true
+			plugin {
+				location "zellij:tab-bar"
+			}
+			size 1
+		}
+		children
+		pane {
+			borderless true
+			plugin {
+				location "zellij:status-bar"
+			}
+			size 2
+		}
+	}
+	tab focus=true name="Dev" {
+		pane {
+			pane {
+				pane {
+					args "."
+					command "yazi"
+				}
+				size "15%"
+				split_direction "horizontal"
+			}
+			pane {
+				args "."
+				command "helix"
+			}
+			split_direction "vertical"
+		}
+	}
+}

@@ -1,0 +1,143 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+// == -> => |> <| || += /= -= -- -< != >= <= +++ *** ---
+{
+  "languages": {
+    "Rust": {
+      "completions": {
+        "lsp": true
+      }
+    }
+  },
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "preview_tabs": {
+    "enabled": true
+  },
+  "language_models": {
+    "ollama": {
+      "api_url": "http://192.168.100.2:11434"
+    }
+  },
+  "tab_bar": {
+    "show": false
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
+  "inlay_hints": {
+    "show_background": false,
+    "enabled": true
+  },
+  "scroll_sensitivity": 1.0,
+  "title_bar": {
+    "button_layout": "platform_default"
+  },
+  "agent": {
+    "dock": "right",
+    "tool_permissions": {
+      "default": "allow"
+    },
+    "inline_assistant_model": {
+      "provider": "mistral",
+      "model": "devstral-medium-latest",
+    },
+    "model_parameters": [],
+    "default_model": {
+      "provider": "ollama",
+      "model": "phi3:latest",
+    },
+  },
+  "ui_font_size": 13,
+  "buffer_font_size": 13,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha",
+  },
+  "tab_size": 2,
+  "buffer_font_family": "Fira Code",
+  "lsp": {
+    "rust-analyzer": {
+      "binary": {
+        "path": "rust-analyzer",
+      },
+      "initialization_options": {
+        // "cargo": {
+        //   "allFeatures": false,
+        //   "features": [],
+        //   "target": null,
+        // },
+
+        // "procMacro": {
+        //   "enable": true,
+        // },
+
+        // "diagnostics": {
+        //   "enable": true,
+        //   "disabled": ["unresolved-proc-macro"],
+        // },
+
+        // "completion": {
+        //   "autoimport": {
+        //     "enable": false,
+        //   },
+        // },
+
+        "memoryUsageLimit": 4096,
+        // "memoryLayout": "lean",
+        // "files": {
+        //   "watcher": "server",
+        //   "exclude": [
+        //     "**/.git/**",
+        //     "**/target/**",
+        //     "**/node_modules/**",
+        //     "**/dist/**",
+        //     "**/out/**",
+        //   ],
+        // },
+        // "cargo": {
+        //   "targetDir": "target/ra",
+        //   "allTargets": true,
+        // },
+        // "check": {
+        //   "command": "clippy",
+        //   "allTargets": true,
+        //   "features": "all",
+        // },
+        // "showUnlinkedFileNotification": false,
+      },
+      "settings": {},
+    },
+  },
+  "terminal": {
+    "shell": {
+      "program": "fish"
+    },
+    "dock": "right",
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+}
