@@ -54,9 +54,11 @@ $env.config.color_config = {
 	       completer: $carapace_completer # check 'carapace_completer' 
 	     }
        },
-       history: {
-           sync_on_enter: false     # Set to false so history isn't shared/synced across active sessions instantly (persists only on exit)
-       },
+       # history: {
+       #     sync_on_enter: true     # Set to false so history isn't shared/synced across active sessions instantly (persists only on exit)
+       #    isolation: true
+       #    file_format: "sqlite"
+       # },
        keybindings: [
          {
            name: backward_kill_word
@@ -76,6 +78,7 @@ $env.config.color_config = {
         split row (char esep) |
         prepend /home/makano/exploit/bin |
         prepend /home/makano/.nix-profile/bin |
+        prepend /home/makano/.nix-profile.bak/bin |
         prepend /home/makano/.local/bin |
         prepend /home/makano/.cargo/bin
       )
@@ -126,3 +129,39 @@ $env.config.hooks.pre_prompt = (
     }
 )
 
+$env.config.history.file_format = "sqlite"
+$env.config.history.isolation = true
+
+# $env.config.hinter.closure = {|ctx|
+#     if ($ctx.line | is-empty) {
+#         return null
+#     }
+
+#     let candidate = (
+#         history
+#         | get command
+#         | where {|cmd| $cmd | str starts-with $ctx.line }
+#         | last
+#     )
+
+#     if ($candidate == null) {
+#         null
+#     } else {
+#         $candidate | str substring ($ctx.line | str length)..
+#     }
+# }
+
+$env.config.hinter.closure = {|ctx|
+    if ($ctx.line | is-empty) { return null }
+
+    let escaped_line = ($ctx.line | str replace --all "'" "''")
+    let sql = $"SELECT command_line FROM history WHERE command_line LIKE '($escaped_line)%' ORDER BY id DESC LIMIT 1;"
+
+    let result = (sqlite3 $nu.history-path $sql | str trim)
+
+    if ($result | is-empty) {
+        null
+    } else {
+        $result | str substring ($ctx.line | str length)..
+    }
+}
