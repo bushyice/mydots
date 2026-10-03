@@ -151,17 +151,31 @@ $env.config.history.isolation = true
 #     }
 # }
 
+# $env.config.hinter.closure = {|ctx|
+#     if ($ctx.line | is-empty) { return null }
+
+#     let escaped_line = ($ctx.line | str replace --all "'" "''")
+#     let sql = $"SELECT command_line FROM history WHERE command_line LIKE '($escaped_line)%' ORDER BY id DESC LIMIT 1;"
+
+#     let result = (sqlite3 $nu.history-path $sql | str trim)
+
+#     if ($result | is-empty) {
+#         null
+#     } else {
+#         $result | str substring ($ctx.line | str length)..
+#     }
+# }
+
 $env.config.hinter.closure = {|ctx|
-    if ($ctx.line | is-empty) { return null }
-
-    let escaped_line = ($ctx.line | str replace --all "'" "''")
-    let sql = $"SELECT command_line FROM history WHERE command_line LIKE '($escaped_line)%' ORDER BY id DESC LIMIT 1;"
-
-    let result = (sqlite3 $nu.history-path $sql | str trim)
-
-    if ($result | is-empty) {
+    if ($ctx.line | is-empty) {
         null
     } else {
-        $result | str substring ($ctx.line | str length)..
+        let hint = (^nuhist hint --line $ctx.line --cwd $ctx.cwd | str trim --right)
+
+        if ($hint | is-empty) {
+            null
+        } else {
+            $hint
+        }
     }
 }

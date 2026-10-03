@@ -1,0 +1,26 @@
+# Mirrors dot_config/ghostty/themes/catppuccin
+[colors-dark]
+background=191724
+foreground=e0def4
+
+regular0=26233a
+regular1=ff728c
+regular2=73e78d
+regular3=ffdb72
+regular4=b392db
+regular5=4d346a
+regular6=c4a7e7
+regular7=eae3f2
+
+bright0=908a96
+bright1=ff9fb1
+bright2=a5ffba
+bright3=ffe8a5
+bright4=ddc2fe
+bright5=e3cdff
+bright6=eddfff
+bright7=fbf8ff
+
+cursor=191724 c4a7e7
+selection-foreground=e0def4
+selection-background=26233a
